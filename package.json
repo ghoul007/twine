@@ -7,7 +7,7 @@
     "twine": "./bin/twine.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node_modules/.bin/mocha"
   },
   "repository": {
     "type": "git",
@@ -20,13 +20,17 @@
   },
   "homepage": "https://github.com/ghoul007/twine#readme",
   "devDependencies": {
+    "chai": "^4.1.2",
     "configstore": "^3.1.2",
     "eslint": "^4.19.1",
     "eslint-config-standard": "^11.0.0",
     "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-mocha": "^5.0.0",
     "eslint-plugin-node": "^6.0.1",
     "eslint-plugin-promise": "^3.8.0",
-    "eslint-plugin-standard": "^3.1.0"
+    "eslint-plugin-standard": "^3.1.0",
+    "mocha": "^5.2.0",
+    "sinon": "^5.1.1"
   },
   "dependencies": {
     "inquirer": "^6.0.0"
