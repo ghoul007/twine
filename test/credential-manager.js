@@ -13,13 +13,13 @@ describe('a crdential manager', () => {
 
     it('should popmt the user', async () => {
         sinon.stub(inquirer, 'prompt').resolves({ key: 'foo', secret: "bar" })
-        let [key, secret] = await creds.getKeyAndSecret();
+        let [key, secret] = await creds.getKeyAndSecret('apiKey');
         expect(key).to.equal('foo')
         expect(secret).to.equal('bar')
         inquirer.prompt.restore()
     });
 
     after(async ()=>{
-        await creds.clearKeyandSecret()
+        await creds.clearKeyandSecret('apiKey')
     })
 });
