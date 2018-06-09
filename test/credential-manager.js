@@ -18,4 +18,8 @@ describe('a crdential manager', () => {
         expect(secret).to.equal('bar')
         inquirer.prompt.restore()
     });
+
+    after(async ()=>{
+        await creds.clearKeyandSecret()
+    })
 });
