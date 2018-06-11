@@ -1,25 +1,24 @@
 const program = require('commander')
 const pkg = require('../package.json')
 const configure = require('../commands/configure')
-program
-    .version(pkg.version)
-    .description('add a twitter API key and scret')
-    .action(async () => {
-        await configure.consumer(pkg.name)
-    })
-
+const util = require('../lib/util')
 
 program
-    .command('account')
-    .description('Authorization access to Twitter account')
-    .action(async () => {
-        await configure.account(pkg.name)
-    })
+  .version(pkg.version)
 
 program
-    .parse(process.argv)
+  .command('consumer')
+  .description('Add a Twitter API key and secret')
+  .action(() => configure.consumer(pkg.name).catch(util.handleError))
 
+program
+  .command('account')
+  .description('Authorize access to a Twitter account')
+  .action(() => configure.account(pkg.name).catch(util.handleError))
+
+program
+  .parse(process.argv)
 
 if (!process.argv.slice(2).length) {
-    program.outputHelp();
+  program.outputHelp()
 }
